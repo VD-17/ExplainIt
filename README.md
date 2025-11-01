@@ -64,3 +64,6 @@ Contributions are welcome! Please fork the repository and submit pull requests.
 This project is licensed under the **MIT License**.
 
 **Note**: The extension was designed to use Chrome’s new Gemini Nano local AI model for summarization and simplification. However, since the API is still experimental and not fully functional in all Chrome versions, the demo uses a fallback to display how the system operates. Once Chrome fully enables local AI APIs, the summarization will run entirely on-device.
+
+Developed by Vidhi Maisuria for the Google Chrome Built-in AI Challenge 2025.
+Made with ❤️ to make learning easier, faster, and more accessible.
