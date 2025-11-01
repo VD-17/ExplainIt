@@ -53,7 +53,7 @@ git clone https://github.com/yourusername/explainit-ai.git
 - If the extension does not appear, double-check **Developer mode** is enabled and the folder is loaded correctly.
 
 ## Demo
-A 2–3 minute demonstration of ExplainIt.AI can be found [here](#) (replace with your YouTube or Vimeo link).
+https://vimeo.com/1132689349?fl=ip&fe=ec
 
 
 ## Contributing
