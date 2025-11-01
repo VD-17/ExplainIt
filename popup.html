@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExplainIt AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h1>ExplainIt AI</h1>
+                </div>
+                <button class="settings-btn" id="settingsBtn" title="Settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <div class="welcome-state" id="welcomeState">
+                <div class="welcome-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2>Welcome to ExplainIt AI</h2>
+                <p>Simplify complex content instantly</p>
+                <div class="welcome-steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <p>Highlight text on any webpage</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <p>Right-click and select "Explain with AI"</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <p>Get instant explanations, summaries & more</p>
+                    </div>
+                </div>
+                <div class="features-list">
+                    <div class="feature-badge">Works Offline</div>
+                    <div class="feature-badge">Private & Secure</div>
+                    <div class="feature-badge">100% Free</div>
+                </div>
+            </div>
+
+            <!-- Processing Section -->
+            <div class="processing-state hidden" id="processingState">
+                <div class="loader"></div>
+                <p>Processing with AI...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section hidden" id="resultsSection">
+                <!-- Tabs Navigation -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="explain">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        Explain
+                    </button>
+                    <button class="tab-btn" data-tab="summarize">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <line x1="8" y1="6" x2="21" y2="6"/>
+                            <line x1="8" y1="12" x2="21" y2="12"/>
+                            <line x1="8" y1="18" x2="21" y2="18"/>
+                            <line x1="3" y1="6" x2="3.01" y2="6"/>
+                            <line x1="3" y1="12" x2="3.01" y2="12"/>
+                            <line x1="3" y1="18" x2="3.01" y2="18"/>
+                        </svg>
+                        Summary
+                    </button>
+                    <button class="tab-btn" data-tab="translate">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 8h13M5 12h8M13 16h6M13 20h6M2 16h6M2 20h6"/>
+                        </svg>
+                        Translate
+                    </button>
+                    <button class="tab-btn" data-tab="notes">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                            <polyline points="17 21 17 13 7 13 7 21"/>
+                            <polyline points="7 3 7 8 15 8"/>
+                        </svg>
+                        My Notes
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <div class="original-text-card">
+                        <div class="card-header">
+                            <h3>Original Text</h3>
+                            <button class="collapse-btn" id="collapseOriginal">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="18 15 12 9 6 15"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="card-content" id="originalText">
+                            Select text on any webpage to get started...
+                        </div>
+                    </div>
+
+                    <!-- Explain -->
+                    <div class="tab-panel active" id="explainPanel">
+                        <div class="output-card">
+                            <div class="card-header">
+                                <h3>Simplified Explanation</h3>
+                                <div class="card-actions">
+                                    <button class="action-btn" id="readAloudExplain" title="Read Aloud">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn" id="copyExplain" title="Copy">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-content" id="explainOutput">
+                                Your simplified explanation will appear here...
+                            </div>
+                        </div>
+
+                        <div class="level-selector">
+                            <label>Explanation Level:</label>
+                            <select id="explanationLevel">
+                                <option value="simple">Simple (Age 8-10)</option>
+                                <option value="teen" selected>Teen (Age 12-15)</option>
+                                <option value="standard">Standard (Age 16+)</option>
+                                <option value="technical">Technical</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="tab-panel hidden" id="summarizePanel">
+                        <div class="output-card">
+                            <div class="card-header">
+                                <h3>Summary</h3>
+                                <div class="card-actions">
+                                    <button class="action-btn" id="readAloudSummary" title="Read Aloud">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn" id="copySummary" title="Copy">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-content" id="summaryOutput">
+                                Your summary will appear here...
+                            </div>
+                        </div>
+
+                        <div class="output-card">
+                            <div class="card-header">
+                                <h3>Key Points</h3>
+                            </div>
+                            <div class="card-content">
+                                <ul id="keyPointsList" class="key-points-list">
+                                    <!-- Key points will be dynamically added -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Translate -->
+                    <div class="tab-panel hidden" id="translatePanel">
+                        <div class="language-selector">
+                            <label for="targetLanguage">Translate to:</label>
+                            <select id="targetLanguage">
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="it">Italian</option>
+                                <option value="pt">Portuguese</option>
+                                <option value="zh">Chinese</option>
+                                <option value="ja">Japanese</option>
+                                <option value="ko">Korean</option>
+                                <option value="ar">Arabic</option>
+                                <option value="hi">Hindi</option>
+                                <option value="ru">Russian</option>
+                            </select>
+                            <button class="btn-primary" id="translateBtn">Translate</button>
+                        </div>
+
+                        <div class="output-card">
+                            <div class="card-header">
+                                <h3>Translation</h3>
+                                <div class="card-actions">
+                                    <button class="action-btn" id="readAloudTranslate" title="Read Aloud">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn" id="copyTranslate" title="Copy">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-content" id="translateOutput">
+                                Select a language and click translate...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- My Notes -->
+                    <div class="tab-panel hidden" id="notesPanel">
+                        <div class="notes-header">
+                            <h3>Saved Notes</h3>
+                            <button class="btn-secondary" id="clearNotesBtn">Clear All</button>
+                        </div>
+                        <div id="notesList" class="notes-list">
+                            <!-- Saved notes will be dynamically added -->
+                            <div class="empty-state">
+                                <p>No saved notes yet. Save explanations to access them later!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn-secondary" id="saveNoteBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                            <polyline points="17 21 17 13 7 13 7 21"/>
+                            <polyline points="7 3 7 8 15 8"/>
+                        </svg>
+                        Save to Notes
+                    </button>
+                    <button class="btn-primary" id="makeVideoBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polygon points="23 7 16 12 23 17 23 7"/>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                        </svg>
+                        Make Video
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Powered by Chrome Built-in AI</p>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
